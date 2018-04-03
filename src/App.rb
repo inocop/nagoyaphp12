@@ -1,10 +1,10 @@
 require_relative './Model/CustomerFactory'
-require_relative './Model/Passengers'
+require_relative './Model/CustomerCollection'
 
 class App
 
   def initialize
-    @passengers = Model::Passengers.new
+    @customers = Model::CustomerCollection.new
   end
 
   def run(data)
@@ -13,14 +13,14 @@ class App
     section_price = tmp_data[0]
 
     # ,で分割
-    code_list = tmp_data[1].split(",")
+    customer_code_list = tmp_data[1].split(",")
 
-    code_list.each do |code|
+    customer_code_list.each do |code|
       customer = Model::CustomerFactory.create(code, section_price)
-      @passengers.add(customer)
+      @customers.add(customer)
     end
 
-    price = @passengers.total_price
+    price = @customers.total_price
     return price
   end
 

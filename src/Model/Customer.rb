@@ -8,34 +8,35 @@ module Model
       return ((price.to_f / 2 / 10).ceil * 10).to_i
     end
 
-    # 通常
-    def normal_price
-      return @section_price.to_i
-    end
-
-    # 定期券
-    def free_price
-      return 0
-    end
-
-    # 福祉割引
-    def discount_price
-      return half_price(@section_price)
-    end
-
     # 料金区分を判定した料金
     def result_price
       case @code[1]
       when 'n'
         normal_price
       when 'p'
-        free_price
+        freepass
       when 'w'
-        discount_price
+        welfare_price
       else
         raise "規定外の料金区分です。"
       end
     end
+
+    # 通常
+    private def normal_price
+      return @section_price.to_i
+    end
+
+    # 定期券
+    private def freepass
+      return 0
+    end
+
+    # 福祉割引料金
+    private def welfare_price
+      return half_price(@section_price)
+    end
+
   end
 
   class BaseCustomer
