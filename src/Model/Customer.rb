@@ -1,7 +1,7 @@
 module Model
   module Calculate
-    attr_accessor :code
-    attr_accessor :section_price
+    attr_reader :code
+    attr_reader :section_price
 
     # 半額計算(10円未満切り上げ)
     def half_price(price)
@@ -14,7 +14,7 @@ module Model
       when 'n'
         normal_price
       when 'p'
-        freepass
+        pass_price
       when 'w'
         welfare_price
       else
@@ -28,7 +28,7 @@ module Model
     end
 
     # 定期券
-    private def freepass
+    private def pass_price
       return 0
     end
 
