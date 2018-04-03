@@ -1,5 +1,5 @@
 module Model
-  class Passenger
+  class Passengers
 
     def initialize
         @customers = []

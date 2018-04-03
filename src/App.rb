@@ -1,10 +1,10 @@
 require_relative './Model/CustomerFactory'
-require_relative './Model/Passenger'
+require_relative './Model/Passengers'
 
 class App
 
   def initialize
-    @passenger = Model::Passenger.new
+    @passengers = Model::Passengers.new
   end
 
   def run(data)
@@ -17,10 +17,10 @@ class App
 
     code_list.each do |code|
       customer = Model::CustomerFactory.create(code, section_price)
-      @passenger.add(customer)
+      @passengers.add(customer)
     end
 
-    price = @passenger.total_price
+    price = @passengers.total_price
     return price
   end
 
