@@ -20,10 +20,10 @@ module Model
 
       # 大人１人につき、幼児２人を料金の高い順に無料にする
       discount_price = @customers.select {|c| c.instance_of?(Infant)}
-                             .sort_by {|c| c.result_price}
-                             .reverse
-                             .take(@adult_count * 2)
-                             .reduce(0) {|sum, c| sum + c.result_price}
+                                 .sort_by {|c| c.result_price}
+                                 .reverse
+                                 .take(@adult_count * 2)
+                                 .reduce(0) {|sum, c| sum + c.result_price}
       total_price -= discount_price unless discount_price.nil?
 
       return total_price
