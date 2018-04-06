@@ -7,8 +7,12 @@ module Model
     end
 
     def add(customer)
-        @customers << customer
-        @adult_count += 1 if customer.instance_of?(Adult)
+      unless customer.is_a?(BaseCustomer)
+        raise 'BaseCustomerクラスに属しているオブジェクトのみ保有する。'
+      end
+
+      @customers << customer
+      @adult_count += 1 if customer.instance_of?(Adult)
     end
 
     def total_price

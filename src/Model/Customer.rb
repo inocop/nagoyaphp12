@@ -1,5 +1,5 @@
 module Model
-  module Calculate
+  module PriceCalculator
     attr_reader :code
     attr_reader :section_price
 
@@ -40,7 +40,7 @@ module Model
   end
 
   class BaseCustomer
-    include Calculate
+    include PriceCalculator
 
     def initialize(code, section_price)
       @code = code
