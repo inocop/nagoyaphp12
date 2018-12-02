@@ -1,5 +1,8 @@
-require_relative './Model/CustomerFactory'
-require_relative './Model/CustomerCollection'
+$LOAD_PATH << File.expand_path('../', __FILE__)
+
+require 'Model/Customer'
+require 'Model/CustomerCollection'
+require 'Model/CustomerFactory'
 
 class App
 
